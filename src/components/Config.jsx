@@ -3,7 +3,7 @@ import { Button, Card, Input, Form, Alert } from "antd";
 import { useEffect, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { SaveOutlined } from "@ant-design/icons";
-
+import "./config.css";
 // eslint-disable-next-line react/prop-types
 function Config({ setShow }) {
   const [form] = Form.useForm();
@@ -66,7 +66,7 @@ function Config({ setShow }) {
     age:number
   }`;
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div className="configScroll">
       <h2 style={{ textAlign: "center" }}>配置页面</h2>
       <div style={{ marginBottom: "10px" }}>
         <Card
@@ -166,15 +166,17 @@ function Config({ setShow }) {
           type="primary"
           onClick={handleAllConfig}
           style={{
-            marginTop: "20px",
+            // marginTop: "20px",
             marginLeft: "50%",
             backgroundColor: "#2d91b3",
+            // position: "absolute",
+            // right: 0,
+            // bottom: 0,
           }}
         >
           保存配置
         </Button>
       </div>
-      {/* <TourPage /> */}
     </div>
   );
 }

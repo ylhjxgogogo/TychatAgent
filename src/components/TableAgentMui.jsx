@@ -2,6 +2,7 @@ import { Input, Button } from "antd";
 import { useEffect, useState } from "react";
 import { aiTranslate } from "../translator";
 import { DataGridPremium, GridToolbar } from "@qvztest/xdgpre";
+import StyledExcel from "./style";
 function TableAgent() {
   const [inputValue, setInputValue] = useState("");
   const [dataSource, setDataSource] = useState([]);
@@ -99,7 +100,6 @@ function TableAgent() {
     } else {
       getColumns().then((res) => {
         let newColumnArr;
-        console.log("res.column", res.Columns);
         newColumnArr = res.Columns?.map((column) => {
           column.editable = true;
           return column; // 返回修改后的列对象
@@ -118,18 +118,28 @@ function TableAgent() {
       style={{
         boxShadow: "0px 8px 40px rgba(0, 0, 0, 0.12)",
         width: "100%",
-        height: "100%",
+        height: "100vh",
       }}
     >
-      <div style={{ height: "50%" }}>
+      <StyledExcel>
         {" "}
         <DataGridPremium
           editMode="row"
           rows={dataSource}
           columns={columns}
           slots={{ toolbar: GridToolbar }}
+          style={{ padding: 20 }}
+          sx={{
+            boxShadow: 2,
+            borderColor: "primary.light",
+            "& .MuiDataGrid-cell:hover": {
+              color: "primary.main",
+            },
+          }}
+          autoPageSize
+          autoHeight
         />
-      </div>
+      </StyledExcel>
       <Button
         size="large"
         type="primary"
