@@ -13,6 +13,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 应用到所有元素，包括 ::-webkit-scrollbar, ::-webkit-scrollbar-thumb, 和 ::-webkit-scrollbar-track */
+
+*::-webkit-scrollbar {
+  width: 10px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 20px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #c3c3c3;
+  margin: 2px;
+  /* 添加外边距 */
+}
+
+*::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 2px;
+  /* 添加内边距 */
+}
+
 a {
   font-weight: 500;
   color: #646cff;

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { DataGridPremium, GridToolbar } from "@qvztest/xdgpre";
-import StyledExcel from "./style";
+import StyledExcel from "../style";
+import { StyledLabel, StyledInput } from "./style";
+import { InboxOutlined } from "@ant-design/icons";
 function Excel(props) {
   const [data, setData] = useState({ columns: [], rows: [] });
   const [excelData, setExcelData] = useState(null);
@@ -46,22 +48,43 @@ function Excel(props) {
       });
     };
   };
+  function CustomNoRowsOverlay() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "100px",
+        }}
+      >
+        <StyledLabel>
+          <InboxOutlined
+            style={{ fontSize: "64px", textAlign: "center", color: "#3187ff" }}
+          />
+          <StyledInput onChange={handleUpload} />
+        </StyledLabel>
+        <p>还没有数据，点击我上传吧！</p>
+      </div>
+    );
+  }
   return (
     <div>
-      <input type="file" onChange={handleUpload} />
       <StyledExcel>
         {" "}
         <DataGridPremium
           editMode="row"
           {...data}
-          slots={{ toolbar: GridToolbar }}
+          slots={{ toolbar: GridToolbar, noRowsOverlay: CustomNoRowsOverlay }}
+          sx={{ "--DataGrid-overlayHeight": "300px" }}
           style={{ padding: "0 20px" }}
           columnBufferPx={100}
-          sx={{
-            "& .super-app-theme--header": {
-              fontSize: "14px",
-            },
-          }}
+          // sx={{
+          //   "& .super-app-theme--header": {
+          //     fontSize: "14px",
+          //   },
+          // }}
         />
       </StyledExcel>
     </div>

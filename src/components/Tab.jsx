@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Tabs } from "antd";
 import TableAgent from "./TableAgentMui";
-import Excel from "./Excel";
+import Excel from "./UploadExcel/Excel";
 function Tab(props) {
   const initialItems = [
     {
@@ -15,12 +15,6 @@ function Tab(props) {
       children: <Excel />,
       key: "2",
     },
-    {
-      label: "Tab 3",
-      children: "Content of Tab 3",
-      key: "3",
-      closable: false,
-    },
   ];
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
   const [items, setItems] = useState(initialItems);
@@ -33,7 +27,7 @@ function Tab(props) {
     const newPanes = [...items];
     newPanes.push({
       label: "New Tab",
-      children: "Content of new Tab",
+      children: <Excel />,
       key: newActiveKey,
     });
     setItems(newPanes);
@@ -66,13 +60,29 @@ function Tab(props) {
     }
   };
   return (
-    <Tabs
-      type="editable-card"
-      onChange={onChange}
-      activeKey={activeKey}
-      onEdit={onEdit}
-      items={items}
-    />
+    <div
+      style={{
+        // border: "1px solid purple",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: 0,
+        margin: 0,
+      }}
+    >
+      <Tabs
+        type="editable-card"
+        style={{
+          // border: "1px solid yellow",
+          flexGrow: 1,
+          boxShadow: "0px 8px 40px rgba(0, 0, 0, 0.12)",
+        }}
+        onChange={onChange}
+        activeKey={activeKey}
+        onEdit={onEdit}
+        items={items}
+      />
+    </div>
   );
 }
 

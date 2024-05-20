@@ -1,10 +1,11 @@
 import styled from "styled-components";
 const StyledExcel = styled.div`
   box-sizing: border-box;
-  height: 100vh;
+  height: 550px;
   width: 100%;
   overflow: auto;
   white-space: nowrap;
+  /* border: 1px solid red; */
   //设置滚动条样式
   &::-webkit-scrollbar {
     width: 6px;

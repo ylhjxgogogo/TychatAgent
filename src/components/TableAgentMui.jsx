@@ -114,11 +114,9 @@ function TableAgent() {
   //完美匹配--来找到要删除的项，而不是通过id
   return (
     <div
-      className="tableAgent"
       style={{
-        boxShadow: "0px 8px 40px rgba(0, 0, 0, 0.12)",
         width: "100%",
-        height: "100vh",
+        height: "100%",
       }}
     >
       <StyledExcel>
@@ -129,13 +127,6 @@ function TableAgent() {
           columns={columns}
           slots={{ toolbar: GridToolbar }}
           style={{ padding: 20 }}
-          sx={{
-            boxShadow: 2,
-            borderColor: "primary.light",
-            "& .MuiDataGrid-cell:hover": {
-              color: "primary.main",
-            },
-          }}
           autoPageSize
           autoHeight
         />

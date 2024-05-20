@@ -1,5 +1,7 @@
-async function stream(msg, dom) {
+async function stream(msg, updateMessage) {
   const URL = "https://api.openai.com/v1/chat/completions";
+  const env = localStorage.getItem("env");
+  const OPENAI_API_KEY = JSON.parse(env).OPENAI_API_KEY;
   try {
     let controller = new AbortController();
     const timeoutId = setTimeout(() => {
@@ -10,7 +12,7 @@ async function stream(msg, dom) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer xxx",
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
@@ -26,7 +28,8 @@ async function stream(msg, dom) {
     }
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
-    dom.innerText = "";
+    // dom.innerText = "";
+    // setAnswer("");
     // eslint-disable-next-line no-constant-condition
     while (true) {
       const { done, value } = await reader.read();
@@ -34,21 +37,18 @@ async function stream(msg, dom) {
         break;
       }
       const chunkString = decoder.decode(value);
-      // console.log("chunk", chunkString);
       const lines = chunkString.split("\n");
-      // console.log("lines", lines);
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
         .map((line) => JSON.parse(line)); // Parse the JSON string
-      // console.log("parsedLines", parsedLines);
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
         const { delta } = choices[0];
         const { content } = delta;
         // Update the UI with the new content
         if (content) {
-          dom.innerText += content;
+          updateMessage(content);
         }
       }
     }

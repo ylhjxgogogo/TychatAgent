@@ -4,6 +4,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import Config from "./components/Config.jsx";
 import Topbar from "./components/TopBar.jsx";
 import Tab from "./components/Tab.jsx";
+import StreamOutPut from "./components/chatWithAI/StreamOutPut.jsx";
 import "./App.css";
 function App() {
   const [show, setShow] = useState(true);
@@ -23,13 +24,20 @@ function App() {
         {show ? (
           <div className="right-column">
             <Config setShow={setShow} show={show} />
+            {/* <StreamOutPut /> */}
           </div>
         ) : (
-          <div className="showConfig">
-            <Button onClick={handleShowConfig}>
-              show config <MenuOutlined />
-            </Button>
-          </div>
+          <>
+            <div className="showConfig">
+              <Button onClick={handleShowConfig}>
+                show config <MenuOutlined />
+              </Button>
+            </div>
+            <div className="right-column">
+              {/* <Config setShow={setShow} show={show} /> */}
+              <StreamOutPut />
+            </div>
+          </>
         )}
       </div>
     </div>
