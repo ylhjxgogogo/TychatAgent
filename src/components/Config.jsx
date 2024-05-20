@@ -166,12 +166,8 @@ function Config({ setShow }) {
           type="primary"
           onClick={handleAllConfig}
           style={{
-            // marginTop: "20px",
             marginLeft: "50%",
             backgroundColor: "#2d91b3",
-            // position: "absolute",
-            // right: 0,
-            // bottom: 0,
           }}
         >
           保存配置
