@@ -76,7 +76,7 @@ function Config({ setShow }) {
               <SaveOutlined />
             </Button>
           }
-          style={{ width: "100%", marginBottom: "20px" }}
+          style={{ width: "100%", marginBottom: "10px" }}
         >
           <Form form={form} onFinish={handleFormFinish}>
             <Form.Item
@@ -168,6 +168,7 @@ function Config({ setShow }) {
           style={{
             marginLeft: "50%",
             backgroundColor: "#2d91b3",
+            zIndex: 50,
           }}
         >
           保存配置

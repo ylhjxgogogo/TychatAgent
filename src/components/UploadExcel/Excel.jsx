@@ -6,7 +6,6 @@ import { StyledLabel, StyledInput } from "./style";
 import { InboxOutlined } from "@ant-design/icons";
 function Excel(props) {
   const [data, setData] = useState({ columns: [], rows: [] });
-  const [excelData, setExcelData] = useState(null);
   const handleUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -17,8 +16,6 @@ function Excel(props) {
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-      console.log(data);
-      setExcelData(data);
       const column = data[0];
       //data[0]表示列名
       //每一列都映射成{headerName: "交易时间", field: "transactionTime", key: "transactionTime", editable: true}；
@@ -56,7 +53,7 @@ function Excel(props) {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "100px",
+          padding: 50,
         }}
       >
         <StyledLabel>
@@ -70,21 +67,20 @@ function Excel(props) {
     );
   }
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <StyledExcel>
         {" "}
         <DataGridPremium
           editMode="row"
           {...data}
           slots={{ toolbar: GridToolbar, noRowsOverlay: CustomNoRowsOverlay }}
-          sx={{ "--DataGrid-overlayHeight": "300px" }}
           style={{ padding: "0 20px" }}
-          columnBufferPx={100}
-          // sx={{
-          //   "& .super-app-theme--header": {
-          //     fontSize: "14px",
-          //   },
-          // }}
+          autoPageSize
         />
       </StyledExcel>
     </div>

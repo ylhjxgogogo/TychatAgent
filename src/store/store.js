@@ -1,14 +1,23 @@
 import { create } from "zustand";
-const useStore = create(() => {
-  return {
-    messages: [
-      {
-        role: "system",
-        content: "你好，有什么可以帮助您！",
-      },
-    ],
-  };
-});
+import { persist, createJSONStorage } from "zustand/middleware";
+const useStore = create()(
+  persist(
+    (set, get) => {
+      return {
+        messages: [
+          // {
+          //   role: "system",
+          //   content: "你好，有什么可以帮助您！",
+          // },
+        ],
+      };
+    },
+    {
+      name: "messages",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
 export const addMessage = (message) => {
   useStore.setState((state) => ({
     messages: [...state.messages, message],

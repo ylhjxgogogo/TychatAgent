@@ -16,17 +16,7 @@ const StyledChatContainer = styled.div`
   overflow-y: auto;
   padding-right: 15px; /* 添加内边距，使内容和滚动条之间有间距 */
 `;
-const StyledImgContainer = styled.div`
-  width: 46px;
-  height: 46px;
-`;
-const StyleImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-`;
+
 const typeVariants = {
   mine: css`
     justify-content: flex-end;
@@ -41,20 +31,44 @@ const StyleChatBubbleContainer = styled.div`
   display: flex;
   ${({ type }) => type && typeVariants[type]}
   margin: 20px 0;
+  /* border: 1px solid red; */
 `;
 const StyledBubble = styled.div`
-  padding: 15px 30px;
+  padding: 15px;
   box-sizing: border-box;
-  max-width: 200px;
+  max-width: 100%;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   z-index: 10;
-  background-color: ${({ type }) =>
-    type && type === "mine" ? "#ccc" : "#fff"};
+  /* background-color: ${({ type }) =>
+    type && type === "mine" ? "#ccc" : "#fff"}; */
   overflow-wrap: break-word; /* 新的推荐使用的属性 */
   overflow-y: auto;
 `;
+const StyledImgContainer = styled.div`
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+`;
+const StyleImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+`;
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  margin-top: 2px;
+`;
+const StyledInput = styled.input.attrs({ type: "file" })`
+  display: none;
+`;
 const StyledFooter = styled.div`
+  display: flex;
+  justify-content: center;
   position: absolute;
   left: 0;
   bottom: 10px;
@@ -70,4 +84,6 @@ export {
   StyledFooter,
   StyledBubble,
   StyledContainer,
+  StyledLabel,
+  StyledInput,
 };

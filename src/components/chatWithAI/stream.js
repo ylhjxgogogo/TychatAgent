@@ -16,7 +16,7 @@ async function stream(msg, updateMessage) {
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: msg }],
+        messages: msg,
         stream: true,
       }),
       signal: controller.signal,

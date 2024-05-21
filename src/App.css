@@ -35,7 +35,6 @@
 .right-column {
   height: 100%;
   flex: 1;
-  min-width: 350px;
+  min-width: 450px;
   flex-shrink: 0;
-  padding: 0 20px;
 }
