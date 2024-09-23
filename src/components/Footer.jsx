@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Input, Button } from "antd";
 import { aiTranslate } from "../translator";
 
-function Footer(props) {
+function Footer() {
   const [inputValue, setInputValue] = useState("");
   const [schema] = useState(() => {
     if (localStorage.getItem("schema")) {

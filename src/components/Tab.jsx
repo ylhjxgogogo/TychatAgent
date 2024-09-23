@@ -63,7 +63,7 @@ function Tab(props) {
     <div
       style={{
         // border: "1px solid purple",
-        height: "100%",
+        height: "1000px",
         display: "flex",
         flexDirection: "column",
         padding: 0,

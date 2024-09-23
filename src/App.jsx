@@ -6,6 +6,8 @@ import Topbar from "./components/TopBar.jsx";
 import Tab from "./components/Tab.jsx";
 import StreamOutPut from "./components/chatWithAI/StreamOutPut.jsx";
 import "./App.css";
+import Chat from "./components/ChatList.jsx";
+import ChatInput from "./components/ChatInput.jsx";
 function App() {
   const [show, setShow] = useState(true);
   const handleShowConfig = () => {
@@ -36,6 +38,8 @@ function App() {
             <div className="right-column">
               {/* <Config setShow={setShow} show={show} /> */}
               <StreamOutPut />
+              {/* <Chat/>
+              <ChatInput/> */}
             </div>
           </>
         )}

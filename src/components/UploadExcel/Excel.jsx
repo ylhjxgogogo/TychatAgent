@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import * as XLSX from "xlsx";
 import { DataGridPremium, GridToolbar } from "@qvztest/xdgpre";
 import StyledExcel from "../style";
 import { StyledLabel, StyledInput } from "./style";
 import { InboxOutlined } from "@ant-design/icons";
-function Excel(props) {
+function Excel() {
   const [data, setData] = useState({ columns: [], rows: [] });
   const handleUpload = (e) => {
     const file = e.target.files[0];

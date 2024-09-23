@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { aiTranslate } from "../translator";
 import { DataGridPremium, GridToolbar } from "@qvztest/xdgpre";
 import StyledExcel from "./style";
+import { useDemoData } from "@mui/x-data-grid-generator";
 function TableAgent() {
+  const { data } = useDemoData({
+    dataSet: "Commodity",
+    rowLength: 100000,
+    editable: true,
+  });
   const [inputValue, setInputValue] = useState("");
   const [dataSource, setDataSource] = useState([]);
   const [schema] = useState(() => {
@@ -116,19 +122,18 @@ function TableAgent() {
     <div
       style={{
         width: "100%",
-        height: "100%",
-        border: "1px solid red",
+        height: "1000px",
       }}
     >
       <StyledExcel>
         {" "}
         <DataGridPremium
           editMode="row"
-          rows={dataSource}
-          columns={columns}
+          // rows={dataSource}
+          // columns={columns}
+          {...data}
           slots={{ toolbar: GridToolbar }}
           style={{ padding: 20 }}
-          autoHeight
         />
       </StyledExcel>
       <Button

@@ -1,6 +1,6 @@
 // import React from "react";
 import { Button, Card, Input, Form, Alert } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { SaveOutlined } from "@ant-design/icons";
 import "./config.css";

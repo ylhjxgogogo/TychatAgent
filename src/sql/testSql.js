@@ -1,12 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
 
 import initSqlJs  from 'sql.js';
 // or if you are in a browser:
 // const initSqlJs = window.initSqlJs;
-import sqliteUrl from "./assets/sql-wasm.wasm?url"
+import sqliteUrl from "../assets/sql-wasm.wasm?url"
 
 const SQL = await initSqlJs({
   // Required to load the wasm binary asynchronously. Of course, you can host it wherever you want
@@ -27,9 +23,3 @@ INSERT INTO hello VALUES (1, 'world');";
 
 db.exec(sqlstr);
 console.log(db.exec("SELECT * FROM hello"));
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
